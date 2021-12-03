@@ -1,6 +1,6 @@
-public struct ComboBox {
-    public private(set) var text = "Hello, World!"
+import SwiftUI
 
-    public init() {
-    }
+public struct ComboBox: View {
+    @Binding var choices: [String]
+    
 }
