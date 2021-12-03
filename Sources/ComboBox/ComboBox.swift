@@ -7,6 +7,7 @@ struct ComboBox: View {
         Binding(get: {
             return query
         }, set: { queryValue in
+            query = queryValue
             filteredChoices = !query.isEmpty ? choices.filter({ choice in
                 choice.lowercased().contains(query.lowercased())
             }) : choices
@@ -17,10 +18,12 @@ struct ComboBox: View {
     
     var body: some View {
         Form {
-            TextField("Search", text: $query)
+            Section {
+                TextField("Search", text: $query)
+            }
             
             List {
-                ForEach(choices, id: \.self) { choice in
+                ForEach(filteredChoices, id: \.self) { choice in
                     Text(choice)
                 }
             }
