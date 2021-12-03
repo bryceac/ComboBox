@@ -23,7 +23,7 @@ struct ComboBox: View {
             }
             
             List {
-                ForEach(filteredChoices, id: \.self) { choice in
+                ForEach(choices, id: \.self) { choice in
                     Text(choice)
                 }
             }
