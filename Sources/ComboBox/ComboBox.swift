@@ -1,11 +1,31 @@
 import SwiftUI
+import Foundation
 
 struct ComboBox: View {
     @State private var query = ""
-    @State var choices: [String] = []
+    var queryBinding: Binding<String> {
+        Binding(get: {
+            return query
+        }, set: { queryValue in
+            filteredChoices = !query.isEmpty ? choices.filter({ choice in
+                choice.lowercased().contains(query.lowercased())
+            }) : choices
+        })
+    }
+    var choices: [String] = []
+    @State private var filteredChoices: [String] = []
     
     var body: some View {
-        TextField("Search", text: $query)
+        Form {
+            TextField("Search", text: $query)
+            
+            List {
+                ForEach(choices, id: \.self) { choice in
+                    Text(choice)
+                }
+            }
+        }
+        
     }
 }
 
