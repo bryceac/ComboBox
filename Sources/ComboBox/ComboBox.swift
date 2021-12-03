@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ComboBox: View {
     @State private var query = ""
-    @Binding var choices: [String]
+    @State var choices: [String] = []
     
     var body: some View {
         TextField("Search", text: $query)
@@ -12,6 +12,6 @@ struct ComboBox: View {
 
 struct ComboBoxPreview: PreviewProvider {
     static var previews: some View {
-        ComboBox(choices: .constant(["Hello", "World", "7"]))
+        ComboBox(choices: ["Hello", "World", "7"])
     }
 }
