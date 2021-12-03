@@ -1,7 +1,7 @@
 import SwiftUI
 import Foundation
 
-struct ComboBox: View {
+struct ComboBoxList: View {
     @State private var query = ""
     var queryBinding: Binding<String> {
         Binding(get: {
@@ -33,8 +33,8 @@ struct ComboBox: View {
 }
 
 
-struct ComboBoxPreview: PreviewProvider {
+struct ComboBoxListPreview: PreviewProvider {
     static var previews: some View {
-        ComboBox(choices: ["Hello", "World", "7"])
+        ComboBoListx(choices: ["Hello", "World", "7"])
     }
 }
