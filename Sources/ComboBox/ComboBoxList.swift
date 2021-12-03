@@ -26,7 +26,7 @@ struct ComboBoxList: View {
             
             List {
                 ForEach(choices, id: \.self) { choice in
-                    Text(choice)
+                    
                 }
             }
         }
