@@ -16,6 +16,8 @@ struct ComboBoxList: View {
     var choices: [String] = []
     @State private var filteredChoices: [String] = []
     
+    @State private var selectedItemIndex: Int = 0
+    
     var body: some View {
         Form {
             Section {
