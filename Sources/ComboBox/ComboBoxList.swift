@@ -26,7 +26,10 @@ struct ComboBoxList: View {
             
             List {
                 ForEach(choices, id: \.self) { choice in
-                    
+                    ComboBoxRow(title: choice, selection: choices[selectedItemIndex]) {
+                        guard let choiceIndex = choices.firstIndex(of: choice) else { return }
+                        selectedItemIndex = choiceIndex
+                    }
                 }
             }
         }
