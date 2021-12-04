@@ -27,7 +27,7 @@ struct ComboBoxRow: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct ComboBoxRow_Previews: PreviewProvider {
     static var previews: some View {
         ComboBoxRow(title: "Hello", selection: "", action: {})
     }
