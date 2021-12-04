@@ -21,7 +21,7 @@ struct ComboBoxList: View {
     
     @State private var filteredChoices: [String] = []
     
-    @State private var selectedItemIndex: Int = 0
+    @Binding var selectedItemIndex: Int
     
     var body: some View {
         Form {
@@ -54,6 +54,6 @@ struct ComboBoxList: View {
 
 struct ComboBoxListPreview: PreviewProvider {
     static var previews: some View {
-        ComboBoxList(choices: ["Hello", "World", "7"])
+        ComboBoxList(choices: ["Hello", "World", "7"], selected)
     }
 }
