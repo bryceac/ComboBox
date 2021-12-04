@@ -24,8 +24,8 @@ let package = Package(
         .target(
             name: "ComboBox",
             dependencies: []),
-        .testTarget(
+        /* .testTarget(
             name: "ComboBoxTests",
-            dependencies: ["ComboBox"]),
+            dependencies: ["ComboBox"]), */
     ]
 )
