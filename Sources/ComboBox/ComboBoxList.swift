@@ -54,6 +54,6 @@ struct ComboBoxList: View {
 
 struct ComboBoxListPreview: PreviewProvider {
     static var previews: some View {
-        ComboBoxList(choices: ["Hello", "World", "7"], selected)
+        ComboBoxList(choices: ["Hello", "World", "7"], selectedItemIndex: .constant(0))
     }
 }
