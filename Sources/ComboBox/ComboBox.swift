@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct ComboBox: View {
     @State var choices: [String]
-    @State var selectedItemIndex: Int
+    @Binding var selectedItemIndex: Int
     
     public var selectedItem: String {
         return choices[selectedItemIndex]
@@ -23,14 +23,14 @@ public struct ComboBox: View {
         }
     }
     
-    public init(choices: [String], selectedItemIndex: Int = 0) {
+    public init(choices: [String], selectedItemIndex: Binding<Int>) {
         self.choices = choices
-        self.selectedItemIndex = selectedItemIndex
+        self._selectedItemIndex = selectedItemIndex
     }
 }
 
 struct ComboBox_Previews: PreviewProvider {
     static var previews: some View {
-        ComboBox(choices: ["Hello", "World", "7"])
+        ComboBox(choices: ["Hello", "World", "7"], selectedItemIndex: .constant(0))
     }
 }
