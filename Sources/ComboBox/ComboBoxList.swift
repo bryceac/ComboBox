@@ -21,7 +21,7 @@ struct ComboBoxList: View {
     var body: some View {
         Form {
             Section {
-                TextField("Search", text: $query)
+                TextField("Search", text: queryBinding)
             }
             
             List {
