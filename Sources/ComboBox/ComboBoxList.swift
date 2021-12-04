@@ -13,7 +13,12 @@ struct ComboBoxList: View {
             }) : choices
         })
     }
-    @State var choices: [String] = []
+    @State var choices: [String] = [] {
+        didSet {
+            filteredChoices = choices
+        }
+    }
+    
     @State private var filteredChoices: [String] = []
     
     @State private var selectedItemIndex: Int = 0
@@ -40,8 +45,6 @@ struct ComboBoxList: View {
                     }
                 }
             }
-        }.onAppear {
-            filteredChoices = choices
         }
     }
 }
