@@ -1,7 +1,7 @@
 import SwiftUI
 import Foundation
 
-struct ComboBoxList: View {
+public struct ComboBoxList: View {
     @State private var query = ""
     var queryBinding: Binding<String> {
         Binding(get: {
@@ -23,7 +23,7 @@ struct ComboBoxList: View {
     
     @Binding var selectedItemIndex: Int
     
-    var body: some View {
+    public var body: some View {
         Form {
             Section {
                 HStack {

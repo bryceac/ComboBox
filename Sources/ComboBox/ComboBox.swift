@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct ComboBox: View {
+public struct ComboBox: View {
     @State var choices: [String]
     @State private var selectedItemIndex: Int = 0
     
-    var selectedItem: String {
+    public var selectedItem: String {
         return choices[selectedItemIndex]
     }
     
-    var body: some View {
+    public var body: some View {
         NavigationView {
             NavigationLink(destination: ComboBoxList(choices: choices, selectedItemIndex: $selectedItemIndex)) {
                 Text(selectedItem)

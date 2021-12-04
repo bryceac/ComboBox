@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ComboBoxRow: View {
+public struct ComboBoxRow: View {
     var title: String
     @State var selection: String
     var action: ()-> Void
@@ -16,7 +16,7 @@ struct ComboBoxRow: View {
         return selection.caseInsensitiveCompare(title) == .orderedSame
     }
     
-    var body: some View {
+    public var body: some View {
         HStack {
             Button(title, action: self.action)
             if isSelected {
