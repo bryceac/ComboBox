@@ -44,14 +44,19 @@ public struct ComboBoxList: View {
             List {
                 ForEach(filteredChoices, id: \.self) { choice in
                     ComboBoxRow(title: choice, selection: selectedItem) {
-                        guard let choiceIndex = choices.firstIndex(of: choice) else { return }
-                        selectedItemIndex = choiceIndex
+                        updateSelection(withChoice: choice)
                     }
                 }
             }
         }.onAppear {
             filteredChoices = choices
         }
+    }
+    
+    func updateSelection(withChoice choice: String) {
+        guard let choiceIndex = choices.firstIndex(of: choice) else { return }
+        
+        selectedItemIndex = choiceIndex
     }
 }
 
