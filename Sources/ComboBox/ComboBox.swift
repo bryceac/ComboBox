@@ -13,7 +13,7 @@ struct ComboBox: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct ComboBox_Previews: PreviewProvider {
     static var previews: some View {
         ComboBox()
     }
