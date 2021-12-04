@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct ComboBoxRow: View {
     var title: String
-    @State var selection: String
+    @Binding var selection: String
     var action: ()-> Void
     
     var isSelected: Bool {
