@@ -45,6 +45,8 @@ struct ComboBoxList: View {
                     }
                 }
             }
+        }.onAppear {
+            filteredChoices = choices
         }
     }
 }
