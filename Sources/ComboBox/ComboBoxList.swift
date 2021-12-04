@@ -27,6 +27,14 @@ public struct ComboBoxList: View {
         return choices[selectedItemIndex]
     }
     
+    var selectionBinding: Binding<String> {
+        return Binding(get: {
+            return selectedItem
+        }, set: { value in
+            updateSelection(withChoice: value)
+        })
+    }
+    
     public var body: some View {
         Form {
             Section {
@@ -43,7 +51,7 @@ public struct ComboBoxList: View {
             
             List {
                 ForEach(filteredChoices, id: \.self) { choice in
-                    ComboBoxRow(title: choice, selection: selectedItem) {
+                    ComboBoxRow(title: choice, selection: selectionBinding) {
                         updateSelection(withChoice: choice)
                     }
                 }
