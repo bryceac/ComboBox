@@ -13,7 +13,7 @@ struct ComboBoxList: View {
             }) : choices
         })
     }
-    var choices: [String] = []
+    @State var choices: [String] = []
     @State private var filteredChoices: [String] = []
     
     @State private var selectedItemIndex: Int = 0
@@ -21,7 +21,15 @@ struct ComboBoxList: View {
     var body: some View {
         Form {
             Section {
-                TextField("Search", text: queryBinding)
+                HStack {
+                    TextField("Search", text: queryBinding)
+                    
+                    Button("+", action: {
+                        choices.append(query)
+                    }).disabled(choices.allSatisfy({ choice in
+                        !choice.lowercased().contains(query.lowercased()) || !(choice.caseInsensitiveCompare(query) == .orderedSame) }))
+                }
+                
             }
             
             List {
