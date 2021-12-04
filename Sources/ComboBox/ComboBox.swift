@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct ComboBox: View {
-    @State var choices: [String]
+    @State public var choices: [String]
     @State private var selectedItemIndex: Int = 0
     
     public var selectedItem: String {
