@@ -29,6 +29,6 @@ public struct ComboBoxRow: View {
 
 struct ComboBoxRow_Previews: PreviewProvider {
     static var previews: some View {
-        ComboBoxRow(title: "Hello", selection: "", action: {})
+        ComboBoxRow(title: "Hello", selection: .constant(""), action: {})
     }
 }
