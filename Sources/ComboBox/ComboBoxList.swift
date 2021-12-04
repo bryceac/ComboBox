@@ -26,7 +26,7 @@ struct ComboBoxList: View {
                     
                     Button("+", action: {
                         choices.append(query)
-                    }).disabled(!choices.allSatisfy({ choice in
+                    }).disabled(query.isEmpty || !choices.allSatisfy({ choice in
                         !choice.lowercased().contains(query.lowercased()) || !(choice.caseInsensitiveCompare(query) == .orderedSame) }))
                 }
                 
