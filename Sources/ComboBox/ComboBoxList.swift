@@ -13,7 +13,7 @@ public struct ComboBoxList: View {
             }) : choices
         })
     }
-    @State var choices: [String] = [] {
+    @Binding var choices: [String] {
         didSet {
             filteredChoices = choices
         }
@@ -65,6 +65,6 @@ public struct ComboBoxList: View {
 
 struct ComboBoxListPreview: PreviewProvider {
     static var previews: some View {
-        ComboBoxList(choices: ["Hello", "World", "7"], selectedItem: .constant(""))
+        ComboBoxList(choices: .constant(["Hello", "World", "7"]), selectedItem: .constant(""))
     }
 }
