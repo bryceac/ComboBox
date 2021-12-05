@@ -3,6 +3,7 @@ import Foundation
 
 public struct ComboBoxList: View {
     @State private var query = ""
+    @Binding var isPresented: Bool
     var queryBinding: Binding<String> {
         Binding(get: {
             return query
@@ -65,6 +66,6 @@ public struct ComboBoxList: View {
 
 struct ComboBoxListPreview: PreviewProvider {
     static var previews: some View {
-        ComboBoxList(choices: .constant(["Hello", "World", "7"]), selectedItem: .constant(""))
+        ComboBoxList(isPresented: .constant(true), choices: .constant(["Hello", "World", "7"]), selectedItem: .constant(""))
     }
 }
