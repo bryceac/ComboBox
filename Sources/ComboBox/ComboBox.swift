@@ -13,7 +13,7 @@ public struct ComboBox: View {
     
     public var body: some View {
         NavigationView {
-            NavigationLink(destination: ComboBoxList(choices: choices, selectedItem: $value)) {
+            NavigationLink(destination: ComboBoxList(choices: $choices, selectedItem: $value)) {
                 Text(value)
             }
         }
