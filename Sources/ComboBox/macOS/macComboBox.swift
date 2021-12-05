@@ -38,17 +38,22 @@ struct macComboBox: NSViewRepresentable {
         return Coordinator(selected: $selectedIndex)
     }
     
-    func makeNSView(context: Context) -> NSComboBox {
+    func makeNSView(context: NSViewRepresentableContext<macComboBox>) -> NSComboBox {
         let combo = NSComboBox()
         combo.numberOfVisibleItems = numberOfVisibleItems
         combo.indexOfSelectedItem = selectedIndex
         combo.usesDataSource = false
+        combo.delegate = context.coordinator
         
         return combo
     }
     
-    func updateNSView(_ nsView: NSComboBox, context: Context) {
-        <#code#>
+    func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
+        guard selectedIndex != nsView.indexOfSelectedItem else { return }
+        
+        DispatchQueue.main.async {
+            nsView.selectItem(at: selectedIndex)
+        }
     }
 }
 
