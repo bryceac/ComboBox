@@ -24,9 +24,10 @@ struct macComboBox: NSViewRepresentable {
         }
         
         func comboBoxSelectionDidChange(_ notification: Notification) {
-            guard let combo = notification.object as? NSComboBox, selected.wrappedValue != combo[combo.indexOfSelectedItem] else { return }
+            guard let combo = notification.object as? NSComboBox,
+                  let currentItem = combo.objectValues[combo.indexOfSelectedItem] as? String,selected.wrappedValue != currentItem else { return }
             
-            selected.wrappedValue = combo[combo.indexOfSelectedItem]
+            selected.wrappedValue = currentItem
         }
     }
     
@@ -48,7 +49,9 @@ struct macComboBox: NSViewRepresentable {
     }
     
     func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
-        guard selected != nsView[nsView.indexOfSelectedItem], let selectedItemIndex = nsView.indexOfItem(withObjectValue: selected) else { return }
+        guard let currentItem = nsView.objectValues[nsView.indexOfSelectedItem] as? String,selected != currentItem else { return }
+        
+        let selectedItemIndex = nsView.indexOfItem(withObjectValue: selected)
         
         DispatchQueue.main.async {
             nsView.selectItem(at: selectedItemIndex)
