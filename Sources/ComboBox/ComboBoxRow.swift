@@ -17,7 +17,7 @@ public struct ComboBoxRow: View {
     @Binding var selection: String
     
     /// a closure that will run when a button is clicked
-    var action: ()-> Void
+    var action: () -> Void
     
     /// computed property to determine if a given item was selected.
     var isSelected: Bool {
