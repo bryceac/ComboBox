@@ -16,8 +16,6 @@ public struct ComboBox: View {
     /// the currently selected value
     @Binding var value: String
     
-    @Binding var presentList: Bool
-    
     public var body: some View {
         
         /// set up a navigation view, so that view will work like a normal picker in forms.
@@ -31,13 +29,11 @@ public struct ComboBox: View {
     /**
      create a ComboBox view.
      - Parameters:
-        - parameter presentList: Boolean to determine if list should be presented.
         - parameter choices: the starting choices for the combobox.
         - parameter value: the default value of the picker.
      - Returns: ComboBox object
      */
-    public init(presentList: Binding<Bool>, choices: Binding<[String]>, value: Binding<String>) {
-        self._presentList = presentList
+    public init(choices: Binding<[String]>, value: Binding<String>) {
         self._choices = choices
         self._value = value
     }
@@ -45,6 +41,6 @@ public struct ComboBox: View {
 
 struct ComboBox_Previews: PreviewProvider {
     static var previews: some View {
-        ComboBox(presentList: .constant(false), choices: .constant(["Hello", "World", "7"]), value: .constant("Hello"))
+        ComboBox(choices: .constant(["Hello", "World", "7"]), value: .constant("Hello"))
     }
 }

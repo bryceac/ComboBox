@@ -5,9 +5,6 @@ public struct ComboBoxList: View {
     /// the query used to filter or add items
     @State private var query = ""
     
-    /// boolean used to determine if view should be dismissed
-    @Binding var isPresented: Bool
-    
     /// binding used to help filter list.
     private var queryBinding: Binding<String> {
         Binding(get: {
@@ -58,7 +55,6 @@ public struct ComboBoxList: View {
                 ForEach(filteredChoices, id: \.self) { choice in
                     ComboBoxRow(title: choice, selection: selectionBinding) {
                         updateSelection(withChoice: choice)
-                        isPresented = false
                     }
                 }
             }
@@ -75,6 +71,6 @@ public struct ComboBoxList: View {
 
 struct ComboBoxListPreview: PreviewProvider {
     static var previews: some View {
-        ComboBoxList(isPresented: .constant(true), choices: .constant(["Hello", "World", "7"]), selectedItem: .constant(""))
+        ComboBoxList(choices: .constant(["Hello", "World", "7"]), selectedItem: .constant(""))
     }
 }
