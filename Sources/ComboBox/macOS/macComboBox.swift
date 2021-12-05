@@ -63,6 +63,6 @@ struct macComboBox: NSViewRepresentable {
 
 struct macComboBox_Previews: PreviewProvider {
     static var previews: some View {
-        macComboBox()
+        macComboBox(content: ["Hello", "World", "7"], numberOfVisibleItems: 5, selected: .constant("Hello"))
     }
 }
