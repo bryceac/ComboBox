@@ -2,6 +2,8 @@ import SwiftUI
 import Foundation
 
 public struct ComboBoxList: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     /// the query used to filter or add items
     @State private var query = ""
     
@@ -55,6 +57,7 @@ public struct ComboBoxList: View {
                 ForEach(filteredChoices, id: \.self) { choice in
                     ComboBoxRow(title: choice, selection: selectionBinding) {
                         updateSelection(withChoice: choice)
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
             }
