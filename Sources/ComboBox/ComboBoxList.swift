@@ -50,6 +50,7 @@ public struct ComboBoxList: View {
                 ForEach(filteredChoices, id: \.self) { choice in
                     ComboBoxRow(title: choice, selection: selectionBinding) {
                         updateSelection(withChoice: choice)
+                        isPresented = false
                     }
                 }
             }
