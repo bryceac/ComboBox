@@ -41,9 +41,13 @@ struct macComboBox: NSViewRepresentable {
     func makeNSView(context: NSViewRepresentableContext<macComboBox>) -> NSComboBox {
         let combo = NSComboBox()
         combo.numberOfVisibleItems = numberOfVisibleItems
-        combo.selectItem(at: selectedIndex)
+        combo.hasVerticalScroller = true
         combo.usesDataSource = false
         combo.delegate = context.coordinator
+        
+        for choice in content {
+            combo.addItem(withObjectValue: choice)
+        }
         
         return combo
     }
