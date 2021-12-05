@@ -45,9 +45,7 @@ struct macComboBox: NSViewRepresentable {
         combo.usesDataSource = false
         combo.delegate = context.coordinator
         
-        for choice in content {
-            combo.addItem(withObjectValue: choice)
-        }
+        combo.addItems(withObjectValues: content)
         
         return combo
     }
