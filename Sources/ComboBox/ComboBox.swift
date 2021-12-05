@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct ComboBox: View {
-    @State var choices: [String]
+    @Binding var choices: [String]
     @Binding var value: String
     
     public var body: some View {
@@ -19,14 +19,14 @@ public struct ComboBox: View {
         }
     }
     
-    public init(choices: [String], value: Binding<String>) {
-        self.choices = choices
+    public init(choices: Binding<[String]>, value: Binding<String>) {
+        self._choices = choices
         self._value = value
     }
 }
 
 struct ComboBox_Previews: PreviewProvider {
     static var previews: some View {
-        ComboBox(choices: ["Hello", "World", "7"], value: .constant("Hello"))
+        ComboBox(choices: .constant(["Hello", "World", "7"]), value: .constant("Hello"))
     }
 }
