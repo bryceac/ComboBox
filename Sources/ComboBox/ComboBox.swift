@@ -16,11 +16,13 @@ public struct ComboBox: View {
     /// the currently selected value
     @Binding var value: String
     
+    @Binding var presentList: Bool
+    
     public var body: some View {
         
         /// set up a navigation view, so that view will work like a normal picker in forms.
         NavigationView {
-            NavigationLink(destination: ComboBoxList(choices: $choices, selectedItem: $value)) {
+            NavigationLink(destination: ComboBoxList(isPresented: $presentList, choices: $choices, selectedItem: $value)) {
                 Text(value)
             }
         }
@@ -33,7 +35,8 @@ public struct ComboBox: View {
         - parameter value: the default value of the picker.
      - Returns: ComboBox object
      */
-    public init(choices: Binding<[String]>, value: Binding<String>) {
+    public init(presentList: Binding<Bool>, choices: Binding<[String]>, value: Binding<String>) {
+        self._presentList = presentList
         self._choices = choices
         self._value = value
     }
@@ -41,6 +44,6 @@ public struct ComboBox: View {
 
 struct ComboBox_Previews: PreviewProvider {
     static var previews: some View {
-        ComboBox(choices: .constant(["Hello", "World", "7"]), value: .constant("Hello"))
+        ComboBox(presentList: .constant(false), choices: .constant(["Hello", "World", "7"]), value: .constant("Hello"))
     }
 }
