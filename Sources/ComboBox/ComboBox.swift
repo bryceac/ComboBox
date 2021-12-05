@@ -20,7 +20,7 @@ public struct ComboBox: View {
         
         /// set up a navigation view, so that view will work like a normal picker in forms.
         NavigationView {
-            NavigationLink(destination: ComboBoxList(isPresented: $presentList, choices: $choices, selectedItem: $value)) {
+            NavigationLink(destination: ComboBoxList(choices: $choices, selectedItem: $value)) {
                 Text(value)
             }
         }
