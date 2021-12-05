@@ -21,11 +21,7 @@ public struct ComboBoxList: View {
     
     @State private var filteredChoices: [String] = []
     
-    @Binding var selectedItemIndex: Int
-    
-    var selectedItem: String {
-        return choices[selectedItemIndex]
-    }
+    @Binding var selectedItem: String
     
     var selectionBinding: Binding<String> {
         return Binding(get: {
@@ -62,15 +58,13 @@ public struct ComboBoxList: View {
     }
     
     func updateSelection(withChoice choice: String) {
-        guard let choiceIndex = choices.firstIndex(of: choice) else { return }
-        
-        selectedItemIndex = choiceIndex
+        selectedItem = choice
     }
 }
 
 
 struct ComboBoxListPreview: PreviewProvider {
     static var previews: some View {
-        ComboBoxList(choices: ["Hello", "World", "7"], selectedItemIndex: .constant(0))
+        ComboBoxList(choices: ["Hello", "World", "7"], selectedItemIndex: .constant(""))
     }
 }
