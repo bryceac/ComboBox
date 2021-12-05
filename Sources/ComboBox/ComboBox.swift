@@ -19,14 +19,14 @@ public struct ComboBox: View {
         }
     }
     
-    public init(choices: [String], selection: Binding<String>) {
+    public init(choices: [String], value: Binding<String>) {
         self.choices = choices
-        value = selection.wrappedValue
+        self._value = value
     }
 }
 
 struct ComboBox_Previews: PreviewProvider {
     static var previews: some View {
-        ComboBox(choices: ["Hello", "World", "7"], selection: .constant("Hello"))
+        ComboBox(choices: ["Hello", "World", "7"], value: .constant("Hello"))
     }
 }
