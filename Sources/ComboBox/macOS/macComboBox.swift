@@ -42,6 +42,7 @@ struct macComboBox: NSViewRepresentable {
         let combo = NSComboBox()
         combo.numberOfVisibleItems = numberOfVisibleItems
         combo.hasVerticalScroller = true
+        combo.completes = true
         combo.usesDataSource = false
         combo.delegate = context.coordinator
         
