@@ -1,7 +1,9 @@
 =ComboBox=
 
 '''Author:''' Bryce Campbell
+
 '''Copyright:''' 2021
+
 '''Description:''' Library that provides a ComboBox for SwiftUI
 
 ==Notes==
