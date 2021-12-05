@@ -2,9 +2,14 @@ import SwiftUI
 import Foundation
 
 public struct ComboBoxList: View {
+    /// the query used to filter or add items
     @State private var query = ""
+    
+    /// boolean used to determine if view should be dismissed
     @Binding var isPresented: Bool
-    var queryBinding: Binding<String> {
+    
+    /// binding used to help filter list.
+    private var queryBinding: Binding<String> {
         Binding(get: {
             return query
         }, set: { queryValue in
@@ -14,6 +19,8 @@ public struct ComboBoxList: View {
             }) : choices
         })
     }
+    
+    /// options for a user to choose from
     @Binding var choices: [String] {
         didSet {
             filteredChoices = choices
@@ -22,9 +29,10 @@ public struct ComboBoxList: View {
     
     @State private var filteredChoices: [String] = []
     
+    /// the item selected from the list
     @Binding var selectedItem: String
     
-    var selectionBinding: Binding<String> {
+    private var selectionBinding: Binding<String> {
         return Binding(get: {
             return selectedItem
         }, set: { value in

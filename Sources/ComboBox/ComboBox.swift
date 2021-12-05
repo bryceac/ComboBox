@@ -31,6 +31,7 @@ public struct ComboBox: View {
     /**
      create a ComboBox view.
      - Parameters:
+        - parameter presentList: Boolean to determine if list should be presented.
         - parameter choices: the starting choices for the combobox.
         - parameter value: the default value of the picker.
      - Returns: ComboBox object
