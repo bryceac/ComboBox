@@ -17,17 +17,12 @@ public struct ComboBox: View {
     @Binding var value: String
     
     public var body: some View {
-        
-        #if os(iOS)
         // set up a navigation view, so that view will work like a normal picker in forms.
         NavigationView {
             NavigationLink(destination: ComboBoxList(choices: $choices, selectedItem: $value)) {
                 Text(value)
             }
         }
-        #else
-        Text("Hello, World!")
-        #endif
     }
     
     /**
