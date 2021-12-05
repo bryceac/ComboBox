@@ -1,3 +1,55 @@
-# ComboBox
+=ComboBox=
 
-A description of this package.
+'''Author:''' Bryce Campbell
+'''Copyright:''' 2021
+'''Description:''' Library that provides a ComboBox for SwiftUI
+
+==Notes==
+
+This is currently a <abbr title="work in progress">WIP</abbr> 
+hat is intended to be used in a future update of <a href="https://github.com/bryceac/BCheckbook">BCheckbook</a>, 
+but can be used in other projects.
+
+Due to SwiftUI being only usable on Apple platform at the time of creation, the curret intended platforms are only iOS and macOS, with support for only iOS at this time.
+On iOS this view acts like a Picker would in a Form or List View.
+
+I have no idea how Apple implements pickers in SwiftUI, nor do I intend for it to work exactly like them, as I just needed something flexible, allowing users to filter and add items to the list.
+
+===Creating a ComboBox===
+
+Using this package, a ComboBox view can be creating by something as simple as this:
+
+<pre>
+ComboBox(choices: $choices, value: $selection)
+</pre>
+
+To allow the user to manipulate the possible choices, as well as keep track of the user's choice, both of which are Binding value types.
+
+===Contributing===
+
+If you would like to help get this prooject off the ground, feel free to do so.
+
+Things that I would like to implement are as follows:
+
+<ul>
+<li>
+<dl>
+<dt style="font-weight:bold">
+<p>Call Apple's <a href="https://developer.apple.com/documentation/appkit/nscombobox">NSComboBox</a> on macOS using the same constructor as currently implemented for iOS.</p>
+</dt>
+<dd>
+<p>I am currently having issues in this department and is what is keeping me from adding macOS as a supported platform in the manifest.</p>
+<p>If you can get a ComboBox to register as a view in SwiftUI before I do, I would appreciate you sending a pull request.</p>
+</dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt style="font-weight:bold">Add Generic Support</dt>
+<dd>
+<p>With the code currently available, I can do this easily myself, but if will likely be a pain getting it on the Mac side.</p>
+<p>Until generics are supported, this view is usable with data that can be represented as Strings, requiring casting to get the right type
+</dd>
+</dl>
+</li>
+</ul>
