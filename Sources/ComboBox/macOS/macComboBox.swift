@@ -47,8 +47,12 @@ struct macComboBox: NSViewRepresentable {
         return comboBox
     }
     
-    func updateNSView(_ nsView: NSComboBox, context: Context) {
-        <#code#>
+    func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
+        guard selected != nsView[nsView.indexOfSelectedItem], let selectedItemIndex = nsView.indexOfItem(withObjectValue: selected) else { return }
+        
+        DispatchQueue.main.async {
+            nsView.selectItem(at: selectedItemIndex)
+        }
     }
     
     
