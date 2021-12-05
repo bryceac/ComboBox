@@ -4,6 +4,8 @@
 
 '''Copyright:''' 2021
 
+'''License:''' See License
+
 '''Description:''' Library that provides a ComboBox for SwiftUI
 
 ==Notes==
