@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AppKit
+import Foundation
 
 struct macComboBox: NSViewRepresentable {
     typealias NSViewType = NSComboBox
@@ -19,7 +20,7 @@ struct macComboBox: NSViewRepresentable {
         return content[selectedIndex]
     }
     
-    final class Coordinator: NSObject, NSComboBoxDelegate, NSComboBoxDataSource {
+    final class Coordinator: NSObject, NSComboBoxDelegate {
         
         @Binding var selected: Int
         @Binding var items: [String]
@@ -34,8 +35,6 @@ struct macComboBox: NSViewRepresentable {
             
             selected = combo.indexOfSelectedItem
         }
-        
-        
     }
     
     func makeCoordinator() -> Coordinator {
@@ -47,8 +46,7 @@ struct macComboBox: NSViewRepresentable {
         combo.numberOfVisibleItems = numberOfVisibleItems
         combo.hasVerticalScroller = true
         combo.completes = true
-        combo.usesDataSource = true
-        combo.dataSource = context.coordinator
+        combo.usesDataSource = false
         combo.delegate = context.coordinator
         
         combo.addItems(withObjectValues: content)
