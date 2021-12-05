@@ -13,20 +13,20 @@ public struct ComboBox: View {
     
     public var body: some View {
         NavigationView {
-            NavigationLink(destination: ComboBoxList(choices: choices, selectedItemIndex: $selectedItemIndex)) {
-                Text(selectedItem)
+            NavigationLink(destination: ComboBoxList(choices: choices, selectedItem: $value)) {
+                Text(value)
             }
         }
     }
     
     public init(choices: [String], selection: Binding<String>) {
         self.choices = choices
-        value = selection
+        value = selection.wrappedValue
     }
 }
 
 struct ComboBox_Previews: PreviewProvider {
     static var previews: some View {
-        ComboBox(choices: ["Hello", "World", "7"], selectedItemIndex: .constant(0))
+        ComboBox(choices: ["Hello", "World", "7"], value: .constant("Hello"))
     }
 }
