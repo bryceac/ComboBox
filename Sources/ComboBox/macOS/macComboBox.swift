@@ -6,15 +6,16 @@
 //
 
 import SwiftUI
+import AppKit
 
-struct SwiftUIView: View {
+struct macComboBox: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct macComboBox_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        macComBox()
     }
 }
