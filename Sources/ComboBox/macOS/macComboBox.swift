@@ -6,8 +6,17 @@
 //
 
 import SwiftUI
+import Appkit
 
-struct macComboBox: View {
+struct macComboBox: NSViewRepresentable {
+    @Binding var content: [String]
+    var numberOfVisibleItems: Int
+    @State var selectedIndex: Int
+    
+    var selectedItem: String {
+        return content[selectedIndex]
+    }
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
