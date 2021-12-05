@@ -8,7 +8,7 @@
 import SwiftUI
 import AppKit
 
-struct macComboBox: View {
+struct macComboBox: NSViewRepresentable {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
