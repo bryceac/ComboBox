@@ -19,11 +19,13 @@ struct macComboBox: NSViewRepresentable {
         return content[selectedIndex]
     }
     
-    final class Coordinator: NSObject, NSComboBoxDelegate {
+    final class Coordinator: NSObject, NSComboBoxDelegate, NSComboBoxDataSource {
         
         @Binding var selected: Int
+        @Binding var items: [String]
         
-        init(selected: Binding<Int>) {
+        init(items: Binding<[String]>, selected: Binding<Int>) {
+            self._items = items
             self._selected = selected
         }
         
@@ -32,10 +34,12 @@ struct macComboBox: NSViewRepresentable {
             
             selected = combo.indexOfSelectedItem
         }
+        
+        
     }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(selected: $selectedIndex)
+        return Coordinator(items: $content, selected: $selectedIndex)
     }
     
     func makeNSView(context: NSViewRepresentableContext<macComboBox>) -> NSComboBox {
@@ -43,7 +47,8 @@ struct macComboBox: NSViewRepresentable {
         combo.numberOfVisibleItems = numberOfVisibleItems
         combo.hasVerticalScroller = true
         combo.completes = true
-        combo.usesDataSource = false
+        combo.usesDataSource = true
+        combo.dataSource = context.coordinator
         combo.delegate = context.coordinator
         
         combo.addItems(withObjectValues: content)
