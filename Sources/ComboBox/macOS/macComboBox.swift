@@ -37,8 +37,12 @@ struct macComboBox: NSViewRepresentable {
         }
         
         func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
-            if !items.contains(string) {
-                items.append(string)
+            if !comboBox.objectValues.contains(where: { item in
+                let itemValue = item as! String
+                
+                return itemValue.caseInsensitiveCompare(string) == .orderedSame
+            }) {
+                comboBox.addItem(withObjectValue: string)
             }
             
             guard let index = items.firstIndex(of: string) else { return -1 }
