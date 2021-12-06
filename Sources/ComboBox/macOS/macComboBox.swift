@@ -16,10 +16,6 @@ struct macComboBox: NSViewRepresentable {
     var numberOfVisibleItems: Int
     @State var selectedIndex: Int
     
-    var selectedItem: String {
-        return content[selectedIndex]
-    }
-    
     final class Coordinator: NSObject, NSComboBoxDelegate, NSComboBoxDataSource {
         
         @Binding var selected: Int
