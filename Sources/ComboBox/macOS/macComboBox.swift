@@ -20,7 +20,7 @@ struct macComboBox: NSViewRepresentable {
         return content[selectedIndex]
     }
     
-    final class Coordinator: NSObject, NSComboBoxDelegate {
+    final class Coordinator: NSObject, NSComboBoxDelegate, NSComboBoxDataSource {
         
         @Binding var selected: Int
         @Binding var items: [String]
@@ -46,7 +46,8 @@ struct macComboBox: NSViewRepresentable {
         combo.numberOfVisibleItems = numberOfVisibleItems
         combo.hasVerticalScroller = true
         combo.completes = true
-        combo.usesDataSource = false
+        combo.usesDataSource = true
+        combo.dataSource = context.coordinator
         combo.delegate = context.coordinator
         
         combo.addItems(withObjectValues: content)
