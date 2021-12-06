@@ -43,6 +43,8 @@ struct macComboBox: NSViewRepresentable {
             } else {
                 comboBox.addItem(withObjectValue: string)
                 
+                comboBox.reloadData()
+                
                 return items.firstIndex(of: string)!
             }
         }
