@@ -38,7 +38,7 @@ struct macComboBox: NSViewRepresentable {
         
         func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
             
-            guard let index = items.firstIndex(of: string) { return -1 }
+            guard let index = items.firstIndex(of: string) else { return -1 }
             
                 return index
         }
