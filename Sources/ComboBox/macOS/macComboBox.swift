@@ -35,6 +35,26 @@ struct macComboBox: NSViewRepresentable {
             
             selected = combo.indexOfSelectedItem
         }
+        
+        func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
+            if !items.contains(string) {
+                items.append(string)
+            }
+            
+            guard let index = items.firstIndex(of: string) else { return -1 }
+            
+            return index
+        }
+        
+        func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
+            items[index]
+        }
+        
+        func numberOfItems(in comboBox: NSComboBox) -> Int {
+            return items.count
+        }
+        
+        
     }
     
     func makeCoordinator() -> Coordinator {
