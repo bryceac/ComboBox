@@ -37,17 +37,19 @@ struct macComboBox: NSViewRepresentable {
         }
         
         func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
-            if !comboBox.objectValues.contains(where: { item in
-                let itemValue = item as! String
-                
-                return itemValue.caseInsensitiveCompare(string) == .orderedSame
-            }) {
-                comboBox.addItem(withObjectValue: string)
-            }
             
             guard let index = items.firstIndex(of: string) else { return -1 }
             
             return index
+        }
+        
+        func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {
+            guard let index = items.firstIndex(where: { option in
+                
+                option.caseInsensitiveCompare(string) == .orderedSame || option.lowercased().contains(string.lowercased())
+            }) else { return nil }
+            
+            return items[index]
         }
         
         func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
