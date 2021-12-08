@@ -14,16 +14,11 @@ struct macComboBox: View {
     @Binding var selectedItem: String
     
     var body: some View {
-        Menu {
-            ForEach(items, id: \.self) { choice in
-                Button(choice) {
-                    selectedItem = choice
-                }
-            }
-        } label: {
+        VStack {
             HStack {
-                TextField("Selection", text: $selectedItem)
-                Image(systemName: "chevron.down")
+                TextField("", text: $selectedItem)
+                Spacer()
+                Image(systemName: "chveron.down")
             }
         }
     }
