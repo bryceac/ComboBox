@@ -23,6 +23,8 @@ struct macComboBox: View {
             }) {
                 items.append(value)
             }
+            
+            selectedItem = value
         })
     }
     
