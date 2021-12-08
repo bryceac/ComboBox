@@ -14,24 +14,19 @@ struct macComboBox: View {
     @State private var showOptions = false
     
     var body: some View {
-        VStack {
-            HStack {
-                TextField("", text: $selectedItem)
-                Spacer()
-                Button(action: {
-                    showOptions.toggle()
-                }) {
-                    Image(systemName: "chevron.down")
-                }.accessibilityLabel("expand")
-            }
-            
+        HStack {
+            TextField("", text: $selectedItem)
+            Spacer()
+            Button(action: {
+                showOptions.toggle()
+            }) {
+                Image(systemName: "chevron.down")
+            }.accessibilityLabel("expand")
+        }.overlay {
             if showOptions {
                 List {
                     ForEach(items, id: \.self) { choice in
-                        Text(choice).onTapGesture {
-                            selectedItem = choice
-                            showOptions = false
-                        }
+                        Text(choice)
                     }
                 }
             }
