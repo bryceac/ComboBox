@@ -16,7 +16,6 @@ struct macComboBox: View {
     var body: some View {
         HStack {
             TextField("", text: $selectedItem)
-            Spacer()
             Button(action: {
                 showOptions.toggle()
             }) {
