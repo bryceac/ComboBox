@@ -34,7 +34,7 @@ struct macComboBox: View {
                 ForEach(items, id: \.self) { choice in
                     Text(choice).onTapGesture {
                         selectedItem = choice
-                        showOptions 
+                        showOptions = false
                     }
                 }
             }
