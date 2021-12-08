@@ -19,7 +19,7 @@ struct macComboBox: View {
             return selectedItem
         }, set: { value in
             if !items.contains(where: { item in
-                item.caseInsensitiveCompare(value) == .orderedSame
+                item.caseInsensitiveCompare(value) == .orderedSame || item.lowercased().contains(where: value.lowercased())
             }) {
                 items.append(value)
             }
