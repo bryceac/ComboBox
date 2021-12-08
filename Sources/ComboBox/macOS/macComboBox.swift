@@ -24,6 +24,16 @@ struct macComboBox: View {
                     Image(systemName: "chevron.down")
                 }.accessibilityLabel("expand")
             }
+            
+            if showOptions {
+                List {
+                    ForEach(items, id: \.self) { choice in
+                        Text(choice).onTapGesture {
+                            selectedItem = choice
+                        }
+                    }
+                }
+            }
         }
     }
 }
