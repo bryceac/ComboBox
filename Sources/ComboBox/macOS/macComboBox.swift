@@ -10,20 +10,25 @@ import Foundation
 
 struct macComboBox: View {
     @Binding var items: [String]
-    @Binding var selectedItem: String {
-        didSet {
-            if !items.contains(where: { option in
-                option.caseInsensitiveCompare(selectedItem) == .orderedSame
-            }) {
-                items.append(selectedItem)
-            }
-        }
-    }
+    @Binding var selectedItem: String
+    
     @State private var showOptions = false
+    
+    var selectionBinding: Binding<String> {
+        Binding(get: {
+            return selectedItem
+        }, set: { value in
+            if !items.contains(where: { item in
+                item.caseInsensitiveCompare(value) == .orderedSame
+            }) {
+                items.append(value)
+            }
+        })
+    }
     
     var body: some View {
         HStack {
-            TextField("", text: $selectedItem)
+            TextField("", text: selectionBinding)
             Button(action: {
                 showOptions.toggle()
             }) {
