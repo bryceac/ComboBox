@@ -19,7 +19,7 @@ struct macComboBox: View {
                 TextField("", text: $selectedItem)
                 Spacer()
                 Button(action: {
-                    showOptions = true
+                    showOptions.toggle()
                 }) {
                     Image(systemName: "chevron.down")
                 }.accessibilityLabel("expand")
@@ -30,6 +30,7 @@ struct macComboBox: View {
                     ForEach(items, id: \.self) { choice in
                         Text(choice).onTapGesture {
                             selectedItem = choice
+                            showOptions = false
                         }
                     }
                 }
