@@ -11,13 +11,11 @@
 ==Notes==
 
 This is currently a <abbr title="work in progress">WIP</abbr> 
-hat is intended to be used in a future update of <a href="https://github.com/bryceac/BCheckbook">BCheckbook</a>, 
+that is intended to be used in a future update of <a href="https://github.com/bryceac/BCheckbook">BCheckbook</a>, 
 but can be used in other projects.
 
-Due to SwiftUI being only usable on Apple platform at the time of creation, the curret intended platforms are only iOS and macOS, with support for only iOS at this time.
+Due to SwiftUI being only usable on Apple platforms at the time of creation, the current intended platforms are only iOS and macOS, with support for only iOS at this time.
 On iOS this view acts like a Picker would in a Form or List View.
-
-I have no idea how Apple implements pickers in SwiftUI, nor do I intend for it to work exactly like them, as I just needed something flexible, allowing users to filter and add items to the list.
 
 ===Creating a ComboBox===
 
