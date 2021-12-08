@@ -11,7 +11,7 @@ import Foundation
 struct macComboBox: View {
     @Binding var items: [String]
     @Binding var selectedItem: String
-    @State var showOptions: Bool = false
+    @State private var showOptions = false
     
     var body: some View {
         HStack {
@@ -22,16 +22,8 @@ struct macComboBox: View {
             }) {
                 Image(systemName: "chevron.down")
             }.accessibilityLabel("expand")
-                
-        }.sheet(isPresented: $showOptions) {
-            List {
-                ForEach(items, id: \.self) { choice in
-                    Text(choice)
-                }
-            }
         }
     }
-    
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
