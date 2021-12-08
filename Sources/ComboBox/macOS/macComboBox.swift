@@ -16,14 +16,15 @@ struct macComboBox: View {
     var body: some View {
         VStack {
             HStack {
-                /* TextField("", text: $selectedItem)
-                Spacer() */
-                
+                TextField("", text: $selectedItem)
+                Spacer()
                 Button(action: {
                     showOptions = true
                 }) {
-                    Image(systemName: "chveron.down")
+                    Image(systemName: "chevron.down")
                 }
+                .accessibilityLabel("expand")
+                
             }
         }
     }
