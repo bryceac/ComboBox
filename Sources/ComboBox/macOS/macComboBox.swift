@@ -6,19 +6,24 @@
 //
 
 import SwiftUI
-import AppKit
 import Foundation
 
 struct macComboBox: View {
     @Binding var items: [String]
     @Binding var selectedItem: String
+    @State var showOptions: Bool = false
     
     var body: some View {
         VStack {
             HStack {
-                TextField("", text: $selectedItem)
-                Spacer()
-                Image(systemName: "chveron.down")
+                /* TextField("", text: $selectedItem)
+                Spacer() */
+                
+                Button(action: {
+                    showOptions = true
+                }) {
+                    Image(systemName: "chveron.down")
+                }
             }
         }
     }
