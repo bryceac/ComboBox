@@ -23,6 +23,12 @@ struct macComboBox: View {
                 Image(systemName: "chevron.down")
             }.accessibilityLabel("expand")
                 
+        }.sheet(isPresented: $showOptions) {
+            List {
+                ForEach(items, id: \.self) { choice in
+                    Text(choice)
+                }
+            }
         }
     }
     
