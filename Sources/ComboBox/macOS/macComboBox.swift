@@ -22,11 +22,12 @@ struct macComboBox: View {
             }) {
                 Image(systemName: "chevron.down")
             }.accessibilityLabel("expand")
-        }.overlay {
-            if showOptions {
-                List {
-                    ForEach(items, id: \.self) { choice in
-                        Text(choice)
+        }.sheet(isPresented: $showOptions) {
+            List {
+                ForEach(items, id: \.self) { choice in
+                    Text(choice).onTapGesture {
+                        selectedItem = choice
+                        showOptions 
                     }
                 }
             }
