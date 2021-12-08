@@ -13,6 +13,21 @@ struct macComboBox: View {
     @Binding var items: [String]
     @Binding var selectedItem: String
     
+    var body: some View {
+        Menu {
+            ForEach(items, id: \.self) { choice in
+                Button(choice) {
+                    selectedItem = choice
+                }
+            }
+        } label: {
+            HStack {
+                TextField("Selection", text: $selectedItem)
+                Image(systemName: "chevron.down")
+            }
+        }
+    }
+    
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
