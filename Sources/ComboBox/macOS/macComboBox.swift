@@ -14,23 +14,9 @@ struct macComboBox: View {
     
     @State private var showOptions = false
     
-    var selectionBinding: Binding<String> {
-        Binding(get: {
-            return selectedItem
-        }, set: { value in
-            if !items.contains(where: { item in
-                item.caseInsensitiveCompare(value) == .orderedSame || item.lowercased().contains(value.lowercased())
-            }) {
-                items.append(value)
-            }
-            
-            selectedItem = value
-        })
-    }
-    
     var body: some View {
         HStack {
-            TextField("", text: selectionBinding)
+            TextField("", text: selectedItem)
             Button(action: {
                 showOptions.toggle()
             }) {
