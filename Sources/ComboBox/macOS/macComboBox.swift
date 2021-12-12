@@ -16,7 +16,7 @@ struct macComboBox: View {
     
     var body: some View {
         HStack {
-            TextField("", text: selectedItem)
+            TextField("", text: $selectedItem)
             Button(action: {
                 showOptions.toggle()
             }) {
@@ -37,6 +37,6 @@ struct macComboBox: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        macComboBox(items: .constant(["Hello", "World", "7"]), selectedItem: .constant("Hello"))
+        macComboBox(items: .constant(["Hello", "World", "7"]), selectedItem: .constant("Hello")).preferredColorScheme(.light)
     }
 }
