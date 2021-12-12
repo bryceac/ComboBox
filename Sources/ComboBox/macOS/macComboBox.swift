@@ -10,7 +10,17 @@ import Foundation
 
 struct macComboBox: View {
     @Binding var items: [String]
-    @Binding var selectedItem: String
+    @Binding var selectedItem: String {
+        #if os(macOS)
+        didSet {
+            if !item.contains(where: { choice in
+                choice.caseInsensitiveCompare(selectedItem) == .orderedSame || choice.lowercased().contains(selectedItem.lowercased())
+            }) {
+                items.append(selectedItem)
+            }
+        }
+        #endif
+    }
     
     @State private var showOptions = false
     
