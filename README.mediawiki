@@ -18,7 +18,7 @@ This library was tested on iOS 15 and macOS 11, but the minimum version of iOS n
 
 Due to this package being meant for only iOS and macOS, importing via Swift Package Manager is <strong>not</strong> supported, though nothing stops you from trying.
 
-Instead, use XCode to import the package into your project and link the framework to the necessary targets.
+Instead, use XCode to import the package into your project and link the framework to the necessary target(s).
 
 ===Creating a ComboBox===
 
@@ -46,3 +46,13 @@ as it will be easier to put in than the things I really wanted.
 ===Contributing===
 
 If you would like to help make this library better by fixing bugs or adding features, feel free to fork this project and make a pull request.
+
+===Support===
+
+As this is the first SwiftUI library that I made and SwiftUI is still 
+relatively new at this point, I will try to help out the best that I can, 
+provided you give me enough details.
+
+If you do need help, contact me at the following address:
+
+tonyhawk2100@gmail.com
