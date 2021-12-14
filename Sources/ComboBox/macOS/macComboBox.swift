@@ -13,7 +13,15 @@ struct macComboBox: NSViewRepresentable {
     
     @Binding var content: [String]
     var numberOfVisibleItems: Int = 5
-    @Binding var selectedItem: String
+    @Binding var selectedItem: String {
+        willSet {
+            guard !content.allSatisfy({ option in
+                option.lowercased().contains(newValue) || option.caseInsensitiveCompare(newValue) == .orderedSame
+            }) else { return }
+            
+            content.append(newValue)
+        }
+    }
     
     var selectedItemIndex: Int? {
         get {
@@ -88,9 +96,7 @@ struct macComboBox: NSViewRepresentable {
         return combo
     }
     
-    func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
-    }
-}
+    func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {}
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
