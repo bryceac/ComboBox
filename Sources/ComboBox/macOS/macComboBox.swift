@@ -15,7 +15,7 @@ struct macComboBox: NSViewRepresentable {
     var numberOfVisibleItems: Int = 5
     @Binding var selectedItem: String {
         willSet {
-            guard !content.allSatisfy({ option in
+            guard !content.contains(where: { option in
                 option.lowercased().contains(newValue) || option.caseInsensitiveCompare(newValue) == .orderedSame
             }) else { return }
             
