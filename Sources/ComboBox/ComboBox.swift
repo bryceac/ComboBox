@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 /// View that allows things to be selected, like a Picker, but also allows the user to customize the list.
 public struct ComboBox: View {
@@ -20,7 +21,13 @@ public struct ComboBox: View {
         Binding(get: {
             return value
         }, set: { itemValue in
+            if !choices.contains(where: { choice in
+                choice.lowercased().contains(itemValue.lowercased()) || choice.caseInsensitiveCompare(itemValue) == .orderedSame
+            }) {
+                choices.append(itemValue)
+            }
             
+            value = itemValue
         })
     }
     
