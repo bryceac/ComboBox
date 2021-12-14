@@ -65,7 +65,7 @@ struct macComboBox: NSViewRepresentable {
         }
         
         func controlTextDidEndEditing(_ obj: Notification) {
-            guard let cell = obj as? NSTextFieldCell else { return }
+            guard let cell = obj.object as? NSTextFieldCell else { return }
             
             print("pressed enter")
             
