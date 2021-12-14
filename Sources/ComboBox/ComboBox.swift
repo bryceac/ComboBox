@@ -17,20 +17,6 @@ public struct ComboBox: View {
     /// the currently selected value
     @Binding var value: String
     
-    private var valueBinding: Binding<String> {
-        Binding(get: {
-            return value
-        }, set: { itemValue in
-            if !choices.contains(where: { choice in
-                choice.lowercased().contains(itemValue.lowercased()) || choice.caseInsensitiveCompare(itemValue) == .orderedSame
-            }) {
-                choices.append(itemValue)
-            }
-            
-            value = itemValue
-        })
-    }
-    
     public var body: some View {
         // set up a navigation view, so that view will work like a normal picker in forms.
         
@@ -41,7 +27,7 @@ public struct ComboBox: View {
             }
         }
         #else
-        macComboBox(content: $choices, selectedItem: valueBinding)
+        macComboBox(content: $choices, selectedItem: $value)
         #endif
     }
     
