@@ -23,19 +23,6 @@ struct macComboBox: NSViewRepresentable {
         }
     }
     
-    var selectedItemIndex: Int? {
-        get {
-            guard let index = content.firstIndex(of: selectedItem) else { return nil }
-            
-            return index
-        }
-        
-        set {
-            guard let newIndex = newValue else { return }
-            selectedItem = content[newIndex]
-        }
-    }
-    
     final class Coordinator: NSObject, NSComboBoxDelegate, NSComboBoxDataSource {
         
         var parent: macComboBox
@@ -45,9 +32,11 @@ struct macComboBox: NSViewRepresentable {
         }
         
         func comboBoxSelectionDidChange(_ notification: Notification) {
-            guard let combo = notification.object as? NSComboBox, parent.selectedItemIndex != combo.indexOfSelectedItem else { return }
+            guard let combo = notification.object as? NSComboBox else { return }
             
-            parent.selectedItemIndex = combo.indexOfSelectedItem
+            DispatchQueue.main.async {
+                parent.selectedItem = combo.stringValue
+            }
         }
         
         func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
