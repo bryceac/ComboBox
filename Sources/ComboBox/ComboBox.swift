@@ -18,11 +18,16 @@ public struct ComboBox: View {
     
     public var body: some View {
         // set up a navigation view, so that view will work like a normal picker in forms.
+        
+        #if os(iOS)
         NavigationView {
             NavigationLink(destination: ComboBoxList(choices: $choices, selectedItem: $value)) {
                 Text(value)
             }
         }
+        #else
+        macComboBox(content: $choices, selectedItem: $value)
+        #endif
     }
     
     /**
