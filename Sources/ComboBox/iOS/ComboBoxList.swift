@@ -26,6 +26,7 @@ public struct ComboBoxList: View {
         }
     }
     
+    /// filtered list
     @State private var filteredChoices: [String] = []
     
     /// the item selected from the list
@@ -41,6 +42,8 @@ public struct ComboBoxList: View {
     
     public var body: some View {
         Form {
+
+            // separate Input field from the list
             Section {
                 HStack {
                     TextField("Search", text: queryBinding)
@@ -62,6 +65,7 @@ public struct ComboBoxList: View {
                 }
             }
         }.onAppear {
+            // make sure filteredChoices is not empty
             filteredChoices = choices
         }
     }
