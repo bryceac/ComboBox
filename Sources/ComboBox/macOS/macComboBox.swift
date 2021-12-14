@@ -35,7 +35,7 @@ struct macComboBox: NSViewRepresentable {
             guard let combo = notification.object as? NSComboBox else { return }
             
             DispatchQueue.main.async {
-                parent.selectedItem = combo.stringValue
+                self.parent.selectedItem = combo.stringValue
             }
         }
         
@@ -86,6 +86,7 @@ struct macComboBox: NSViewRepresentable {
     }
     
     func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {}
+}
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
