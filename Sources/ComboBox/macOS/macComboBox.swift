@@ -65,13 +65,11 @@ struct macComboBox: NSViewRepresentable {
         }
         
         func controlTextDidEndEditing(_ obj: Notification) {
-            guard let cell = obj.object as? NSTextFieldCell else { return }
+            guard let cell = obj.object as? NSComboBox else { return }
             
             print("pressed enter")
             
-            DispatchQueue.main.async {
-                self.parent.selectedItem = cell.stringValue
-            }
+            self.parent.selectedItem = cell.stringValue
         }
         
         
