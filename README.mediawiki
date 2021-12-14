@@ -1,21 +1,24 @@
 =ComboBox=
 
+'''Version:''' 0.1
+
 '''Author:''' Bryce Campbell
 
 '''Copyright:''' 2021
 
-'''License:''' See License
+'''License:''' See LICENSE
 
 '''Description:''' Library that provides a ComboBox for SwiftUI
 
 ==Notes==
 
-This is currently a <abbr title="work in progress">WIP</abbr> 
-that is intended to be used in a future update of <a href="https://github.com/bryceac/BCheckbook">BCheckbook</a>, 
-but can be used in other projects.
+This library was tested on iOS 15 and macOS 11, but the minimum version of iOS needed is iOS 13.
 
-Due to SwiftUI being only usable on Apple platforms at the time of creation, the current intended platforms are only iOS and macOS, with support for only iOS at this time.
-On iOS this view acts like a Picker would in a Form or List View.
+===Importing===
+
+Due to this package being meant for only iOS and macOS, importing via Swift Package Manager is <strong>not</strong> supported, though nothing stops you from trying.
+
+Instead, use XCode to import the package into your project and link the framework to the necessary targets.
 
 ===Creating a ComboBox===
 
@@ -27,31 +30,19 @@ ComboBox(choices: $choices, value: $selection)
 
 To allow the user to manipulate the possible choices, as well as keep track of the user's choice, both of which are Binding value types.
 
+On iOS, this will function liker a Picker, 
+which will direct you to a new view that allows filtering 
+and adding items to the list.
+
+On macOS, this will add an NSComboBox to the view, 
+with case insensitive autocompletion and also adds custom values to the list
+of selectable options, unlike the default implementation.
+
+However, it is not possible to specify a number of visible items at this time.
+
+This ability <strong>may</strong> come at a later date, 
+as it will be easier to put in than the things I really wanted.
+
 ===Contributing===
 
-If you would like to help get this prooject off the ground, feel free to do so.
-
-Things that I would like to implement are as follows:
-
-<ul>
-<li>
-<dl>
-<dt style="font-weight:bold">
-<p>Call Apple's <a href="https://developer.apple.com/documentation/appkit/nscombobox">NSComboBox</a> on macOS using the same constructor as currently implemented for iOS.</p>
-</dt>
-<dd>
-<p>I am currently having issues in this department and is what is keeping me from adding macOS as a supported platform in the manifest.</p>
-<p>If you can get a ComboBox to register as a view in SwiftUI before I do, I would appreciate you sending a pull request.</p>
-</dd>
-</dl>
-</li>
-<li>
-<dl>
-<dt style="font-weight:bold">Add Generic Support</dt>
-<dd>
-<p>With the code currently available, I can do this easily myself, but if will likely be a pain getting it on the Mac side.</p>
-<p>Until generics are supported, this view is usable with data that can be represented as Strings, requiring casting to get the right type
-</dd>
-</dl>
-</li>
-</ul>
+If you would like to help make this library better by fixing bugs or adding features, feel free to fork this project and make a pull request.
