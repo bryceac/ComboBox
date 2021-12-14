@@ -62,7 +62,8 @@ struct macComboBox: NSViewRepresentable {
         func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {
             guard let index = items.firstIndex(where: { option in
                 
-                option.caseInsensitiveCompare(string) == .orderedSame || option.lowercased().contains(string.lowercased())
+                option.lowercased().contains(string.lowercased() ||
+                option.caseInsensitiveCompare(string) == .orderedSame })
             }) else { return nil }
             
             return items[index]
