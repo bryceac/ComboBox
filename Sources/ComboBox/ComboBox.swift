@@ -41,7 +41,7 @@ public struct ComboBox: View {
             }
         }
         #else
-        macComboBox(content: $choices, selectedItem: $value)
+        macComboBox(content: $choices, selectedItem: valueBinding)
         #endif
     }
     
