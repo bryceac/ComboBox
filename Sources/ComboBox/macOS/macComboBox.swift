@@ -63,8 +63,8 @@ struct macComboBox: NSViewRepresentable {
         func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {
             guard let index = parent.content.firstIndex(where: { option in
                 
-                option.lowercased().contains(string.lowercased() ||
-                option.caseInsensitiveCompare(string) == .orderedSame })
+                option.lowercased().contains(string.lowercased()) ||
+                option.caseInsensitiveCompare(string) == .orderedSame
             }) else { return nil }
             
             return parent.content[index]
@@ -87,25 +87,20 @@ struct macComboBox: NSViewRepresentable {
     
     func makeNSView(context: NSViewRepresentableContext<macComboBox>) -> NSComboBox {
         let combo = NSComboBox()
-        combo.numberOfVisibleItems = numberOfVisibleItems
+        combo.numberOfVisibleItems = parent.numberOfVisibleItems
         combo.hasVerticalScroller = true
         combo.completes = true
         combo.usesDataSource = true
         combo.dataSource = context.coordinator
         combo.delegate = context.coordinator
-        combo.addItems(withObjectValues: content)
-        combo.stringValue = selectedItem
+        combo.addItems(withObjectValues: parent.content)
+        combo.stringValue = parent.selectedItem
         combo.reloadData()
         return combo
     }
     
-    /* func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
-        guard selectedIndex != nsView.indexOfSelectedItem else { return }
-        
-        DispatchQueue.main.async {
-            nsView.selectItem(at: selectedIndex)
-        }
-    } */
+    func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
+    }
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
