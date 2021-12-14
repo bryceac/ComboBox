@@ -92,8 +92,8 @@ struct macComboBox: NSViewRepresentable {
         combo.usesDataSource = true
         combo.dataSource = context.coordinator
         combo.delegate = context.coordinator
-        
         combo.addItems(withObjectValues: content)
+        combo.stringValue = selectedItem
         
         return combo
     }
