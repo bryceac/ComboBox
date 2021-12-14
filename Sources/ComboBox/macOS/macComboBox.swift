@@ -14,7 +14,13 @@ struct macComboBox: NSViewRepresentable {
     
     @Binding var content: [String]
     var numberOfVisibleItems: Int
-    @State var selectedIndex: Int
+    @Binding var selectedItem: String
+    
+    var selectedItemIndex: Int? {
+        guard let index = content.firstIndex(of: slectedItem) else { return nil }
+        
+        return index
+    }
     
     var selectedItem: String {
         return content[selectedIndex]
