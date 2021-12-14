@@ -39,7 +39,7 @@ struct macComboBox: NSViewRepresentable {
         func comboBoxSelectionDidChange(_ notification: Notification) {
             guard let combo = notification.object as? NSComboBox, parent.selectedItemIndex != combo.indexOfSelectedItem else { return }
             
-            selectedItem = combo.stringValue
+            parent.selectedItemIndex = combo.indexOfSelectedItem
         }
         
         func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
@@ -60,28 +60,28 @@ struct macComboBox: NSViewRepresentable {
         }
         
         func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {
-            guard let index = items.firstIndex(where: { option in
+            guard let index = parent.content.firstIndex(where: { option in
                 
                 option.lowercased().contains(string.lowercased() ||
                 option.caseInsensitiveCompare(string) == .orderedSame })
             }) else { return nil }
             
-            return items[index]
+            return parent.content[index]
         }
         
         func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
-            items[index]
+            parent.content[index]
         }
         
         func numberOfItems(in comboBox: NSComboBox) -> Int {
-            return items.count
+            return parent.content.count
         }
         
         
     }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(items: $content, selected: $selectedIndex)
+        return Coordinator(self)
     }
     
     func makeNSView(context: NSViewRepresentableContext<macComboBox>) -> NSComboBox {
@@ -94,17 +94,17 @@ struct macComboBox: NSViewRepresentable {
         combo.delegate = context.coordinator
         combo.addItems(withObjectValues: content)
         combo.stringValue = selectedItem
-        
+        combo.reloadData()
         return combo
     }
     
-    func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
+    /* func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
         guard selectedIndex != nsView.indexOfSelectedItem else { return }
         
         DispatchQueue.main.async {
             nsView.selectItem(at: selectedIndex)
         }
-    }
+    } */
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
