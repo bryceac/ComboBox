@@ -16,6 +16,14 @@ public struct ComboBox: View {
     /// the currently selected value
     @Binding var value: String
     
+    private var valueBinding: Binding<String> {
+        Binding(get: {
+            return value
+        }, set: { itemValue in
+            
+        })
+    }
+    
     public var body: some View {
         // set up a navigation view, so that view will work like a normal picker in forms.
         
