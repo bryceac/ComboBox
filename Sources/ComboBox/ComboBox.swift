@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Foundation
 
 /// View that allows things to be selected, like a Picker, but also allows the user to customize the list.
 public struct ComboBox: View {
