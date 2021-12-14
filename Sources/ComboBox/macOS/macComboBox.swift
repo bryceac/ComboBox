@@ -28,10 +28,10 @@ struct macComboBox: NSViewRepresentable {
     
     final class Coordinator: NSObject, NSComboBoxDelegate, NSComboBoxDataSource {
         
-        @Binding var selected: Int
+        @Binding var selected: String
         @Binding var items: [String]
         
-        init(items: Binding<[String]>, selected: Binding<Int>) {
+        init(items: Binding<[String]>, selected: Binding<String>) {
             self._items = items
             self._selected = selected
         }
