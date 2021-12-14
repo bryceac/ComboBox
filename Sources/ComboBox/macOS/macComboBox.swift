@@ -64,6 +64,14 @@ struct macComboBox: NSViewRepresentable {
             return parent.content.count
         }
         
+        func controlTextDidEndEditing(_ obj: Notification) {
+            guard let combo = obj as? NSComboBox else { return }
+            
+            DispatchQueue.main.async {
+                self.parent.selectedItem = combo.stringValue
+            }
+        }
+        
         
     }
     
