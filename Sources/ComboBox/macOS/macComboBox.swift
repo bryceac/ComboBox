@@ -13,7 +13,7 @@ struct macComboBox: NSViewRepresentable {
     typealias NSViewType = NSComboBox
     
     @Binding var content: [String]
-    var numberOfVisibleItems: Int
+    var numberOfVisibleItems: Int = 5
     @Binding var selectedItem: String
     
     var selectedItemIndex: Int? {
