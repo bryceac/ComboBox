@@ -18,13 +18,14 @@ struct macComboBox: NSViewRepresentable {
     
     var selectedItemIndex: Int? {
         get {
-            guard let index = content.firstIndex(of: slectedItem) else { return nil }
+            guard let index = content.firstIndex(of: selectedItem) else { return nil }
             
             return index
         }
         
         set {
-            selectedItem = content[newValue]
+            guard let newIndex = newValue else { return }
+            selectedItem = content[newIndex]
         }
     }
     
@@ -46,14 +47,14 @@ struct macComboBox: NSViewRepresentable {
             
             var itemIndex: Int = 0
             
-            if let index = items.firstIndex(of: string) {
+            if let index = parent.content.firstIndex(of: string) {
                 itemIndex = index
             } else {
                 comboBox.addItem(withObjectValue: string)
                 
                 comboBox.reloadData()
                 
-                itemIndex = items.firstIndex(of: string)!
+                itemIndex = parent.content.firstIndex(of: string)!
             }
             
             return itemIndex
