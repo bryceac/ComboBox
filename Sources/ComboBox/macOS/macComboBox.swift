@@ -21,7 +21,7 @@ struct macComboBox: NSViewRepresentable {
     @Binding var selectedItem: String {
         willSet {
             // make sure item is added to choices when necessary.
-            guard !content.contains(where: { option in
+            guard !newValue.isEmpty && !content.contains(where: { option in
                 option.lowercased().contains(newValue) || option.caseInsensitiveCompare(newValue) == .orderedSame
             }) else { return }
             
