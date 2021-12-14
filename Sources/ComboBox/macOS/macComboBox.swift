@@ -6,37 +6,98 @@
 //
 
 import SwiftUI
+import AppKit
 import Foundation
 
-struct macComboBox: View {
-    @Binding var items: [String]
-    @Binding var selectedItem: String
+struct macComboBox: NSViewRepresentable {
+    typealias NSViewType = NSComboBox
     
-    @State private var showOptions = false
+    @Binding var content: [String]
+    var numberOfVisibleItems: Int
+    @State var selectedIndex: Int
     
-    var body: some View {
-        HStack {
-            TextField("", text: $selectedItem)
-            Button(action: {
-                showOptions.toggle()
-            }) {
-                Image(systemName: "chevron.down")
-            }.accessibilityLabel("expand")
-        }.sheet(isPresented: $showOptions) {
-            List {
-                ForEach(items, id: \.self) { choice in
-                    Text(choice).onTapGesture {
-                        selectedItem = choice
-                        showOptions = false
-                    }
-                }
+    var selectedItem: String {
+        return content[selectedIndex]
+    }
+    
+    final class Coordinator: NSObject, NSComboBoxDelegate, NSComboBoxDataSource {
+        
+        @Binding var selected: Int
+        @Binding var items: [String]
+        
+        init(items: Binding<[String]>, selected: Binding<Int>) {
+            self._items = items
+            self._selected = selected
+        }
+        
+        func comboBoxSelectionDidChange(_ notification: Notification) {
+            guard let combo = notification.object as? NSComboBox, selected != combo.indexOfSelectedItem else { return }
+            
+            selected = combo.indexOfSelectedItem
+        }
+        
+        func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
+            
+            if let index = items.firstIndex(of: string) {
+                return index
+            } else {
+                comboBox.addItem(withObjectValue: string)
+                
+                comboBox.reloadData()
+                
+                return items.firstIndex(of: string)!
             }
+        }
+        
+        func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {
+            guard let index = items.firstIndex(where: { option in
+                
+                option.caseInsensitiveCompare(string) == .orderedSame || option.lowercased().contains(string.lowercased())
+            }) else { return nil }
+            
+            return items[index]
+        }
+        
+        func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
+            items[index]
+        }
+        
+        func numberOfItems(in comboBox: NSComboBox) -> Int {
+            return items.count
+        }
+        
+        
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(items: $content, selected: $selectedIndex)
+    }
+    
+    func makeNSView(context: NSViewRepresentableContext<macComboBox>) -> NSComboBox {
+        let combo = NSComboBox()
+        combo.numberOfVisibleItems = numberOfVisibleItems
+        combo.hasVerticalScroller = true
+        combo.completes = true
+        combo.usesDataSource = true
+        combo.dataSource = context.coordinator
+        combo.delegate = context.coordinator
+        
+        combo.addItems(withObjectValues: content)
+        
+        return combo
+    }
+    
+    func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
+        guard selectedIndex != nsView.indexOfSelectedItem else { return }
+        
+        DispatchQueue.main.async {
+            nsView.selectItem(at: selectedIndex)
         }
     }
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        macComboBox(items: .constant(["Hello", "World", "7"]), selectedItem: .constant("Hello"))
+        macComboBox(content: .constant(["Hello", "World", "7"]), numberOfVisibleItems: 5, selectedIndex: 0)
     }
 }
