@@ -28,12 +28,10 @@ struct macComboBox: NSViewRepresentable {
     
     final class Coordinator: NSObject, NSComboBoxDelegate, NSComboBoxDataSource {
         
-        @Binding var selected: String
-        @Binding var items: [String]
+        var parent: macComboBox
         
-        init(items: Binding<[String]>, selected: Binding<String>) {
-            self._items = items
-            self._selected = selected
+        init(_ parent: macComboBox) {
+            self.parent = parent
         }
         
         func comboBoxSelectionDidChange(_ notification: Notification) {
