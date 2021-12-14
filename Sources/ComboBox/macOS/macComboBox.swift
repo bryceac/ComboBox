@@ -87,14 +87,14 @@ struct macComboBox: NSViewRepresentable {
     
     func makeNSView(context: NSViewRepresentableContext<macComboBox>) -> NSComboBox {
         let combo = NSComboBox()
-        combo.numberOfVisibleItems = parent.numberOfVisibleItems
+        combo.numberOfVisibleItems = numberOfVisibleItems
         combo.hasVerticalScroller = true
         combo.completes = true
         combo.usesDataSource = true
         combo.dataSource = context.coordinator
         combo.delegate = context.coordinator
-        combo.addItems(withObjectValues: parent.content)
-        combo.stringValue = parent.selectedItem
+        combo.addItems(withObjectValues: content)
+        combo.stringValue = selectedItem
         combo.reloadData()
         return combo
     }
@@ -105,6 +105,6 @@ struct macComboBox: NSViewRepresentable {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        macComboBox(content: .constant(["Hello", "World", "7"]), numberOfVisibleItems: 5, selectedIndex: 0)
+        macComboBox(content: .constant(["Hello", "World", "7"]), selectedItem: .constant("Hello"))
     }
 }
