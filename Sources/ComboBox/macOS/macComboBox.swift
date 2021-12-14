@@ -7,7 +7,6 @@
 
 import SwiftUI
 import AppKit
-import Foundation
 
 struct macComboBox: NSViewRepresentable {
     typealias NSViewType = NSComboBox
