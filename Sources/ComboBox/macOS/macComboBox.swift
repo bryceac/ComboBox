@@ -5,6 +5,7 @@
 //  Created by Bryce Campbell on 12/5/21.
 //
 
+#if os(macOS)
 import SwiftUI
 import AppKit
 
@@ -114,3 +115,4 @@ struct SwiftUIView_Previews: PreviewProvider {
         macComboBox(content: .constant(["Hello", "World", "7"]), selectedItem: .constant("Hello"))
     }
 }
+#endif
