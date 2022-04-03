@@ -1,6 +1,6 @@
 =ComboBox=
 
-'''Version:''' 0.1
+'''Version:''' 0.1.1
 
 '''Author:''' Bryce Campbell
 
@@ -12,7 +12,20 @@
 
 ==Notes==
 
-This library was tested on iOS 15 and macOS 11, but the minimum version of iOS needed is iOS 13.
+This library was tested on iOS 15 and macOS 12, but the minimum version of iOS needed is iOS 13 and macOS 11.
+
+===Version History===
+
+<dl>
+<dt style="font-weight:bold">0.1.1</dt>
+<dd>
+<p>change add button label to image, as recommended by aheze for the main UI of an app I use this library in.</p>
+<p>Released April 2022</p>
+</dd>
+<dt style="font-weight:bold">0.1</dt>
+<dd>
+<p>Initial release.</p>
+</dl>
 
 ===Importing===
 
