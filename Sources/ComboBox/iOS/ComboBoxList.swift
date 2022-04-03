@@ -48,9 +48,11 @@ public struct ComboBoxList: View {
                 HStack {
                     TextField("Search", text: queryBinding)
                     
-                    Button("+", action: {
-                        choices.append(query)
-                    }).disabled(query.isEmpty || !choices.allSatisfy({ choice in
+                    Button(action: {
+                         choices.append(query)
+                     }, label: {
+                         Image(systemName: "plus")
+                     }).disabled(query.isEmpty || !choices.allSatisfy({ choice in
                         !choice.lowercased().contains(query.lowercased()) || !(choice.caseInsensitiveCompare(query) == .orderedSame) }))
                 }
                 
