@@ -39,7 +39,7 @@ public struct ComboBox: View {
      - Parameters:
         - parameter choices: the starting choices for the combobox.
         - parameter value: the default value of the picker.
-        - parameter itemsToDisplay: The number of items shown at a time.
+        - parameter itemsToDisplay: The number of items shown at a time. The default value is 5.
      - Returns: ComboBox object
      */
     public init(choices: Binding<[String]>, value: Binding<String>, itemsToDisplay numberOfItemsDisplayed: Int = 5) {

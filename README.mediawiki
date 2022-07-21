@@ -1,6 +1,6 @@
 =ComboBox=
 
-'''Version:''' 0.1.1
+'''Version:''' 0.2
 
 '''Author:''' Bryce Campbell
 
@@ -17,6 +17,11 @@ This library was tested on iOS 15 and macOS 12, but the minimum version of iOS n
 ===Version History===
 
 <dl>
+<dt style="font-weight:bold">0.2</dt>
+<dd>
+<p>Allow user to specify the number of items displayed on macOS, and try to get the Combobox to stay static.</p>
+<p>Released July 2022</p>
+</dd>
 <dt style="font-weight:bold">0.1.1</dt>
 <dd>
 <p>change add button label to image, as recommended by aheze for the main UI of an app I use this library in.</p>
@@ -51,10 +56,11 @@ On macOS, this will add an NSComboBox to the view,
 with case insensitive autocompletion and also adds custom values to the list
 of selectable options, unlike the default implementation.
 
-However, it is not possible to specify a number of visible items at this time.
+If you want to specify the number of items to display at a time in a mac application, you can utilize the following:
 
-This ability <strong>may</strong> come at a later date, 
-as it will be easier to put in than the things I really wanted.
+<pre>
+ComboBox(choices: $choices, value: $selection, itemsToDisplay: 10)
+</pre>
 
 ===Contributing===
 
