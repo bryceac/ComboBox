@@ -106,7 +106,7 @@ struct macComboBox: NSViewRepresentable {
         return combo
     }
     
-    // declare function that does nothing to satisfy NSViewRepresentable.
+    // declare function that helps to make sure the view always reflects the correct value.
     func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
         guard let combo = nsView as? NSComboBox else { return }
         
