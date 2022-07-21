@@ -107,7 +107,13 @@ struct macComboBox: NSViewRepresentable {
     }
     
     // declare function that does nothing to satisfy NSViewRepresentable.
-    func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {}
+    func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
+        guard let combo = nsView as? NSComboBox else { return }
+        
+        guard selectedItem != combo.stringValue else { return }
+        
+        combo.stringValue = selectedItem
+    }
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
