@@ -110,9 +110,9 @@ struct macComboBox: NSViewRepresentable {
     func updateNSView(_ nsView: NSComboBox, context: NSViewRepresentableContext<macComboBox>) {
         guard let combo = nsView as? NSComboBox else { return }
         
-        guard selectedItem != combo.stringValue else { return }
+        guard parent.selectedItem != combo.stringValue else { return }
         
-        combo.stringValue = selectedItem
+        combo.stringValue = parent.selectedItem
     }
 }
 
