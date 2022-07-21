@@ -16,6 +16,10 @@ public struct ComboBox: View {
     /// the currently selected value
     @Binding var value: String
     
+    
+    /** the number of items to display.
+     This property is only used on macOS and is ignored otherwise.
+        */
     var numberOfItemsDisplayed: Int = 5
     
     public var body: some View {
