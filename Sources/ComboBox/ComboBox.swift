@@ -16,6 +16,8 @@ public struct ComboBox: View {
     /// the currently selected value
     @Binding var value: String
     
+    var numberOfItemsDisplayed: Int = 5
+    
     public var body: some View {
         // set up a navigation view, so that view will work like a normal picker in forms.
         
@@ -33,11 +35,13 @@ public struct ComboBox: View {
      - Parameters:
         - parameter choices: the starting choices for the combobox.
         - parameter value: the default value of the picker.
+        - parameter itemsToDisplay: The number of items shown at a time.
      - Returns: ComboBox object
      */
-    public init(choices: Binding<[String]>, value: Binding<String>) {
+    public init(choices: Binding<[String]>, value: Binding<String>, itemsToDisplay numberOfItemsDisplayed: Int = 5) {
         self._choices = choices
         self._value = value
+        self.numberOfItemsDisplayed = numberOfItemsDisplayed
     }
 }
 
