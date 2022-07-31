@@ -50,6 +50,8 @@ public struct ComboBoxList: View {
                     
                     Button(action: {
                          choices.append(query)
+                        
+                        selectedItem = query
                      }, label: {
                          Image(systemName: "plus")
                      }).disabled(query.isEmpty || !choices.allSatisfy({ choice in
