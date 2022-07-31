@@ -52,6 +52,8 @@ public struct ComboBoxList: View {
                          choices.append(query)
                         
                         selectedItem = query
+                        
+                        presentationMode.wrappedValue.dismiss()
                      }, label: {
                          Image(systemName: "plus")
                      }).disabled(query.isEmpty || !choices.allSatisfy({ choice in
