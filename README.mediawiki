@@ -1,6 +1,6 @@
 =ComboBox=
 
-'''Version:''' 0.2
+'''Version:''' 0.2.1
 
 '''Author:''' Bryce Campbell
 
@@ -17,6 +17,13 @@ This library was tested on iOS 15 and macOS 12, but the minimum version of iOS n
 ===Version History===
 
 <dl>
+<dt style="font-weight:bold">0.2.1</dt>
+<dd>
+<p>Minor patch</p>
+<p>Queries that do not match existing items 
+automatically become the selected when added on iOS.</p>
+<p>Released July 2022</p>
+</dd>
 <dt style="font-weight:bold">0.2</dt>
 <dd>
 <p>Allow user to specify the number of items displayed on macOS, and try to get the Combobox to stay static.</p>
